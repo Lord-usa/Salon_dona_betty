@@ -1,0 +1,55 @@
+{% extends "template.html" %} 
+{% block title %} CLIENTES {% endblock %}
+
+{% block content %} {% load static %} 
+<br>
+<table class="table">
+    <caption>LISTA DE DATOS DE CONTACTO</caption>
+    <thead class="thead-dark">
+        <tr>
+            <th scope=col>#</th>
+            <th scope=col>NOMBRES</th>
+            <th scope=col>APELLIDO PATERNO</th>
+            <th scope=col>APELLIDO MATERNO</th>
+            <th scope=col>EMAIL</th>
+            <th scope=col>TELEFONO</th>
+            <th scope=col>ASUNTO</th>
+            <th scope=col></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if datosContactos %} {% for dato in datosContactos %}
+            <tr>
+                <th>{{dato.id}}</th>
+                <td>{{dato.nombres}}</td>
+                <td>{{dato.apellido_pat}}</td>
+                <td>{{dato.apellido_mat}}</td>
+                <td>{{dato.email}}</td>
+                <td>{{dato.telefono}}</td>
+                <td>{{dato.asunto}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" id="btn-edit-{{dato.id}}" onclick="editar_contacto({{dato.id}})">EDIT</button>
+                    <button type="button" class="btn btn-primary" id="btn-delete-{{dato.id}}" data-toggle="modal" data-target="#modal-{{dato.id}}-delete">DELETE</button>
+                    <div class="modal" id="modal-{{dato.id}}-delete">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">ELIMINAR ASUNTO</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Al seleccionar esta opción se eliminara el asunto seleccionado. ¿Desea eliminar el registro?.
+                                    </p>
+                                    <button type="button" class="btn btn-primary" onclick="eliminar_contacto({{dato.id}})">OK</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}{% endif%}
+    </tbody>
+</table>
+<script src="{% static 'js/validate/cliente-validate.js' %}"></script>
+{% endblock %}
