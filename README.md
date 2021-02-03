@@ -1,5 +1,10 @@
 # TAV 2021
 
+## Conexion a bd
+## Puerto en settings debe ser cambiado a 3306
+## No olvidar
+
+
 ## COMANDOS PARA INSTALAR LIBRERIA DJANGO
 python.exe -m pip install Django
 
