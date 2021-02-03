@@ -1,9 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+{% load static %} {% load pwa %}
 
 <head>
-
+    {% progressive_web_app_meta %}
     <meta charset="UTF-8">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,17 +26,26 @@
                 <a class="nav-link active" href="/cuidadocabello">CUIDADO CABELLO</a>
                 <a class="nav-link " href="/cortes">GALERIA</a>
                 <a class="nav-link " href="/contactanos">CONTACTANOS</a>
-                <a class="nav-link" href="/quienessomos">QUIENES SOMOS</a>
-                <a class="nav-link" href="/clientes">CLIENTES</a>
+                <a class="nav-link" href="/quienessomos">QUIENES SOMOS</a> {% if username %}
+                <a class="nav-link" href="/clientes">CLIENTES</a> {% endif %}
                 </div>
-                <!--<div>
+                {% if username %}
+                <div class="input-group-btn" style="margin-left:5px;">
+                    <div style="color:white">{{username}}</div>
+                </div>
+                <div class="input-group-btn" style="margin-left:5px;">
+                    <div><a href="/logout" class="btn btn-primary btn-md active" role="button" aria-pressed="true">Salir</a></div>
+                </div>
+                {% else %}
+                <div class="input-group-btn">
                     <form id="frm-login" action="/login" method="POST">
                         {% csrf_token %}
                         <input id="txt-usuario" type="text" placeholder="USUARIO" name="usuario" />
                         <input id="txt-password" type="password" placeholder="PASSWORD" name="password" />
-                        <button type="submit" class="btn btn-primary" id="btn-enviar" onclick="">LOGIN</button>
+                        <button type="submit" class="btn btn-primary" id="btn-login" onclick="">Ingresar</button>
                     </form>
-                </div>-->
+                </div>
+                {% endif %}
             </div>
         </nav>
     </div>

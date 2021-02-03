@@ -16,6 +16,17 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'Salon_dona_betty', 'static', 'js', 'serviceworker.js')
+PWA_APP_NAME = 'cache_sitio'
+PWA_APP_DESCRIPTION = "Cache de la plantilla"
+PWA_APP_LANG = 'es-CL'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/img/02.jpg',
+        'sizes': '160x160'
+    }
+]
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -39,7 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Salon_dona_betty',
-    'persistencia'
+    'integracion',
+    'autenticacion',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +92,7 @@ WSGI_APPLICATION = 'Salon_dona_betty.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'salon',
+        'NAME': 'AUTENTICACION_SALON',
         'USER':'root',
         'PASSWORD':'system1995',
         'HOST':'localhost',

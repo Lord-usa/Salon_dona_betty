@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Salon_dona_betty.lib.views import home, cuidadocabello, cortes, contactanos, quienessomos, clientes, registrar_contacto, eliminar_contacto, form_editar_contacto, actualizar_contacto, autenticar
+from Salon_dona_betty.lib.views import home, cuidadocabello, cortes, contactanos, quienessomos, clientes, registrar_contacto, eliminar_contacto, form_editar_contacto, actualizar_contacto, autenticar, logout
+from django.urls import path, include
 
 urlpatterns = [
+    path('',include('pwa.urls')),
     path('admin/', admin.site.urls),
     path('home/' , home),
     path('', home),
@@ -30,5 +32,6 @@ urlpatterns = [
     path('eliminar-contacto/', eliminar_contacto),
     path('form-editar-contacto/', form_editar_contacto),
     path('actualizar-contacto', actualizar_contacto),
-    path('login', autenticar)
+    path('login', autenticar),
+    path('logout/', logout),
 ]

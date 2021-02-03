@@ -4,7 +4,7 @@
 {% block content %} {% load static %} 
 <br>
 <table class="table">
-    <caption>LISTA DE DATOS DE CONTACTO</caption>
+    <caption>LISTA DE CLIENTES QUE REALIZARON RESERVA Y/O COTIZACION</caption>
     <thead class="thead-dark">
         <tr>
             <th scope=col>#</th>
@@ -28,8 +28,8 @@
                 <td>{{dato.telefono}}</td>
                 <td>{{dato.asunto}}</td>
                 <td>
-                    <button type="button" class="btn btn-danger" id="btn-edit-{{dato.id}}" onclick="editar_contacto({{dato.id}})">EDIT</button>
-                    <button type="button" class="btn btn-primary" id="btn-delete-{{dato.id}}" data-toggle="modal" data-target="#modal-{{dato.id}}-delete">DELETE</button>
+                    <button type="button" class="btn btn-danger" id="btn-edit-{{dato.id}}" onclick="editar_contacto({{dato.id}})">EDITAR</button>
+                    <button type="button" class="btn btn-primary" id="btn-delete-{{dato.id}}" data-toggle="modal" data-target="#modal-{{dato.id}}-delete">ELIMINAR</button>
                     <div class="modal" id="modal-{{dato.id}}-delete">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -38,10 +38,10 @@
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Al seleccionar esta opción se eliminara el asunto seleccionado. ¿Desea eliminar el registro?.
+                                    <p>Al seleccionar esta opción se eliminara el registro de cliente seleccionado. ¿Desea eliminarlo?.
                                     </p>
                                     <button type="button" class="btn btn-primary" onclick="eliminar_contacto({{dato.id}})">OK</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
                                 </div>
                             </div>
                         </div>

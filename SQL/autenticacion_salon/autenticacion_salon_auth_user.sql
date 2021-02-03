@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
 --
--- Host: localhost    Database: salon
+-- Host: localhost    Database: autenticacion_salon
 -- ------------------------------------------------------
 -- Server version	8.0.21
 
@@ -16,32 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `datos_contacto`
+-- Table structure for table `auth_user`
 --
 
-DROP TABLE IF EXISTS `datos_contacto`;
+DROP TABLE IF EXISTS `auth_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `datos_contacto` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `NOMBRES` varchar(350) NOT NULL,
-  `APELLIDO_PAT` varchar(120) NOT NULL,
-  `APELLIDO_MAT` varchar(120) NOT NULL,
-  `EMAIL` varchar(80) NOT NULL,
-  `TELEFONO` varchar(50) NOT NULL,
-  `ASUNTO` varchar(500) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `auth_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime(6) DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `username` varchar(150) NOT NULL,
+  `first_name` varchar(150) NOT NULL,
+  `last_name` varchar(150) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `datos_contacto`
+-- Dumping data for table `auth_user`
 --
 
-LOCK TABLES `datos_contacto` WRITE;
-/*!40000 ALTER TABLE `datos_contacto` DISABLE KEYS */;
-INSERT INTO `datos_contacto` VALUES (1,'Pamela Thamara','Aracena','Gamboa','paaracen@gmail.com','953247709','Corte'),(3,'Alba sofia','Aracena','Duhalde','albaad@gmail.cl','2245789654','Trenzas y corte de pelo');
-/*!40000 ALTER TABLE `datos_contacto` ENABLE KEYS */;
+LOCK TABLES `auth_user` WRITE;
+/*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
+INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$216000$lXcZyzj0rKft$EfwlwsRdLEUxe0w4E6cG8sKwrhMNZPaM6QVcAvNfF9s=','2021-02-03 05:26:36.000000',1,'DnBetty','','','salondonabetty@beautysalon.cl',1,1,'2021-02-03 05:02:17.000000'),(2,'pbkdf2_sha256$216000$g1C1h0QhGFRD$rN6ApdLPxT4E+75DDRjYe3hupCNSxASzBTklI4/+CKY=',NULL,0,'RominaStaff','','','',0,1,'2021-02-03 05:27:47.000000');
+/*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-24 21:24:34
+-- Dump completed on 2021-02-03  2:36:24

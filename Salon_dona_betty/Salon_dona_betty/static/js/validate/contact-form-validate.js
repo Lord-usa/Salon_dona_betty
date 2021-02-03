@@ -9,19 +9,19 @@ function enviar(formName) {
 
     //Validaciones de campos
     let message = isEmpty(nombres, "NOMBRES");
-    message = message + isMaxLength(nombres, "NOMBRES", 500);
+    message = message + isMaxLength(nombres, "NOMBRES", 50);
     message = message + isEmpty(apellidoPaterno, "APELLIDO PATERNO");
-    message = message + isMaxLength(apellidoPaterno, "APELLIDO PATERNO", 81);
+    message = message + isMaxLength(apellidoPaterno, "APELLIDO PATERNO", 50);
     message = message + isEmpty(apellidoMaterno, "APELLIDO MATERNO");
-    message = message + isMaxLength(apellidoMaterno, "APELLIDO MATERNO", 81);
+    message = message + isMaxLength(apellidoMaterno, "APELLIDO MATERNO", 50);
     message = message + isEmpty(email, "EMAIL");
-    message = message + isMaxLength(email, "EMAIL", 71);
+    message = message + isMaxLength(email, "EMAIL", 80);
     message = message + validateEmail(email,"EMAIL");
     message = message + isEmpty(telefono, "TELÉFONO");
-    message = message + isMaxLength(telefono, "TELÉFONO", 12);
+    message = message + isMaxLength(telefono, "TELÉFONO", 15);
     message = message + validatePhone(telefono,"TELÉFONO");
     message = message + isEmpty(asunto, "ASUNTO");
-    message = message + isMaxLength(asunto, "ASUNTO", 501);
+    message = message + isMaxLength(asunto, "ASUNTO", 350);
 
     if (message.length > 0) {
         alert("ERROR: \n" + message);

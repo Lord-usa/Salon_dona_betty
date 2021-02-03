@@ -1,23 +1,53 @@
-## TAV 2021
+# TAV 2021
 
-## Comandos para instalar libreria djnago
+## COMANDOS PARA INSTALAR LIBRERIA DJANGO
 python.exe -m pip install Django
 
-## Actualizar
-python.exe -m pip install --upgrade pip
+## CREACIÓN DE PROYECTO WEB
+django-admin startproject bazar_web
 
-## Creacion de proyecto web
-django-admin startproject -nombre-
-
-## Desplegar aplicacion web (corre servicio)
+## DESPLEGAR APLICACIÓN WEB
 python.exe .\manage.py runserver
 
-## Instalar libreria para conexion con mysql
-python.exe -m install mysqlclient
+## DESPLEGAR CON IP DE RED LOCAL
+python.exe .\manage.py runserver  192.168.43.216:8000
 
-## Limpiar terminal
-clear 
+## INSTALAR LIBRERIA PARA CONEXIÓN CON MYSQL
+python.exe -m pip install mysqlclient
 
-## Inspeccionar DB + creación models
+## INSPECCIÓN DB + CREACIÓN MODELS
 python.exe .\manage.py inspectdb
 
+## _______________________________________________________________________
+
+## CREACIÓN PROYECTO WEB SERVICE 
+django-admin startproject bazar_ws
+## 
+cd bazar_ws
+## MODULO CONEXIÓN BASE DE DATOS
+python.exe .\manage.py startapp persistencia
+## INSTALAR LIBRERIA DJANGO REST FRAMEWORK
+python.exe -m pip install djangorestframework
+## _______________________________________________________________________
+
+## MODULO CONEXIÓN BASE DE DATOS
+python.exe .\manage.py startapp integracion
+
+python.exe -m pip install requests
+
+## _______________________________________________________________________
+
+## AUTENTICACIÓN
+python.exe .\manage.py startapp autenticacion
+
+python.exe .\manage.py makemigrations autenticacion
+
+python.exe .\manage.py migrate
+
+python.exe .\manage.py createsuperuser
+
+## ---------SUPER USUARIO SALON DOÑA BETTY-------------
+
+Username : DnBetty
+Email address: salondonabetty@beautysalon.cl
+Password: salonbetty1999
